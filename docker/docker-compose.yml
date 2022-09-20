@@ -1,0 +1,167 @@
+version: '3'
+
+volumes:
+  prometheus_data: { }
+  grafana_data: { }
+  db_enterprise:
+    driver: local
+  db_support:
+    driver: local
+
+services:
+  db:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    volumes:
+      - ./database/init-database.sql:/docker-entrypoint-initdb.d/init-database.sql
+      - db_enterprise:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: boaEntrega
+    ports:
+      - "5432:5432"
+    networks:
+      - boa-entrega-network
+  db-support:
+    container_name: pg_container_support
+    image: postgres
+    restart: always
+    volumes:
+      - ./database/init-database-support.sql:/docker-entrypoint-initdb.d/init-database-support.sql
+      - db_support:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: boaEntregaSupport
+    ports:
+      - "5433:5433"
+    networks:
+      - boa-entrega-network
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    networks:
+      - boa-entrega-network
+  mongo:
+    container_name: mongo-boa-entrega
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    networks:
+      - boa-entrega-network
+    command: [ "--bind_ip", "0.0.0.0" ]
+  rabbitmq:
+    container_name: rabbitmq-boa-entrega
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - boa-entrega-network
+  mock-app-boa-entrega:
+    container_name: mock-boa-entrega
+    build:
+      context: ../BoaEntregaGSL-Mock
+      dockerfile: Dockerfile
+    image: mock-boa-entrega:latest
+    ports:
+      - "7669:7669"
+    networks:
+      - boa-entrega-network
+  data-app-boa-entrega:
+    container_name: data-boa-entrega
+    build:
+      context: ../BoaEntregaGSL-Data
+      dockerfile: Dockerfile
+    image: data-boa-entrega:latest
+    ports:
+      - "7668:7668"
+    networks:
+      - boa-entrega-network
+  support-app-boa-entrega:
+    container_name: support-boa-entrega
+    build:
+      context: ../BoaEntregaGSL-Support
+      dockerfile: Dockerfile
+    image: support-boa-entrega:latest
+    ports:
+      - "7667:7667"
+    depends_on:
+      - db-support
+    networks:
+      - boa-entrega-network
+  enterprise-app-boa-entrega:
+    container_name: enterprise-boa-entrega
+    build:
+      context: ../BoaEntregaGSL-Enterprise
+      dockerfile: Dockerfile
+    image: enterprise-boa-entrega:latest
+    ports:
+      - "7666:7666"
+    depends_on:
+      - db
+      - mongo
+      - rabbitmq
+      - mock-app-boa-entrega
+    networks:
+      - boa-entrega-network
+  nginx:
+    container_name: nginx-boa-entrega
+    build:
+      context: ../nginx
+      dockerfile: Dockerfile
+    image: nginx
+    ports:
+      - "80:80"
+    networks:
+      - boa-entrega-network
+    links:
+      - "mock-app-boa-entrega"
+      - "data-app-boa-entrega"
+      - "support-app-boa-entrega"
+      - "enterprise-app-boa-entrega"
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - boa-entrega-network
+    links:
+      - "enterprise-app-boa-entrega"
+      - "nginx"
+  grafana:
+    image: grafana/grafana:3.0.1
+    container_name: grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - boa-entrega-network
+    links:
+      - "prometheus"
+networks:
+  boa-entrega-network:
+    driver: bridge
