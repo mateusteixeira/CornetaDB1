@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -38,6 +36,9 @@ public class User extends AbstractEntity<Long> {
 
     @Column(name = "BLOCK_CHAIN_CODE")
     private String blockChainCode;
+
+    @OneToMany(mappedBy = "bet", fetch = FetchType.EAGER)
+    private List<UserBet> userBets;
 
     @Override
     public String getMainIdentifier() {
