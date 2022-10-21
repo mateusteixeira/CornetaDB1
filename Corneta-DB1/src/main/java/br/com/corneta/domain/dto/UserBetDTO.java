@@ -7,33 +7,33 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BetDTO extends AbstractDTO {
+public class UserBetDTO extends AbstractDTO {
 
-    @JsonProperty("id")
-    private Long id;
+    @JsonProperty("user")
+    private UserDTO userDTO;
 
-    @JsonProperty("match")
-    private MatchDTO matchDTO;
-
-    @JsonProperty("contractHashCode")
-    private String contractHashCode;
+    @JsonProperty("bets")
+    private List<BetDTO> betDTOs;
 
     @Override
     public Long getId() {
-        return id;
+        return userDTO.getId();
     }
 
     @Override
     public String getMainIdentifier() {
-        return id.toString();
+        return userDTO.getMainIdentifier();
     }
 
     @Override
     public String getSecondaryIdentifier() {
-        return contractHashCode;
+        return betDTOs.stream().map(BetDTO::getMainIdentifier).collect(Collectors.joining(","));
     }
 }

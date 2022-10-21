@@ -22,7 +22,6 @@ public class MessageAPI {
         this.messageService = messageService;
     }
 
-    @ApiOperation("Cria uma mensagem")
     @PostMapping(produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO messageDTO) {
         log.info("Recebido request message userFrom: {} to: {}", messageDTO.getIdUserFrom(), messageDTO.getIdUserTo());
@@ -31,20 +30,16 @@ public class MessageAPI {
         return ResponseEntity.created(location).body(savedMessageDTO);
     }
 
-    @ApiOperation("Retorna todos as mensagens recebidas do usuário")
     @GetMapping(value = "/mymessages/{idUser}", produces = {"application/json"})
     public ResponseEntity<List<MessageDTO>> getAllUserMessages(@PathVariable(name = "idUser") Long idUser) {
         return ResponseEntity.ok(messageService.getAllUserMessages(idUser));
     }
 
-
-    @ApiOperation("Retorna todos as mensagens enviadas do usuário")
     @GetMapping(value = "/mymessagessent/{idUser}", produces = {"application/json"})
     public ResponseEntity<List<MessageDTO>> getAllMessagesSent(@PathVariable(name = "idUser") Long idUser) {
         return ResponseEntity.ok(messageService.getAllMessagesSentByUser(idUser));
     }
 
-    @ApiOperation("Marca mensagem como lida")
     @PutMapping(
             value = {"{id}"},
             produces = {"application/text"},

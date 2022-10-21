@@ -1,17 +1,26 @@
 package br.com.corneta.service;
 
-import br.com.corneta.domain.Bet;
 import br.com.corneta.domain.dto.BetDTO;
-import br.com.genericcrud.repository.IJpaRepository;
-import br.com.genericcrud.service.AbstractService;
-import br.com.genericcrud.translator.AbstractTranslator;
-import br.com.genericcrud.validator.AbstractValidator;
+import br.com.corneta.repository.BetRepository;
+import br.com.corneta.translator.BetTranslator;
 import org.springframework.stereotype.Service;
 
-@Service
-public class BetService extends AbstractService <Bet, Long, BetDTO> {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public BetService(AbstractValidator<Bet, Long> abstractValidator, IJpaRepository<Bet, Long> abstractRepository, AbstractTranslator<Bet, Long, BetDTO> abstractTranslator) {
-        super(abstractValidator, abstractRepository, abstractTranslator);
+@Service
+public class BetService {
+
+    private final BetRepository betRepository;
+
+    private final BetTranslator  betTranslator;
+
+    public BetService(BetRepository betRepository, BetTranslator betTranslator) {
+        this.betRepository = betRepository;
+        this.betTranslator = betTranslator;
+    }
+
+    public List<BetDTO> getAll() {
+        return betRepository.findAll().stream().map(betTranslator::toDTO).collect(Collectors.toList());
     }
 }

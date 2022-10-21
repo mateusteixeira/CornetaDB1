@@ -1,17 +1,28 @@
 package br.com.corneta.api;
 
-import br.com.corneta.domain.Bet;
 import br.com.corneta.domain.dto.BetDTO;
-import br.com.genericcrud.api.AbstractAPI;
-import br.com.genericcrud.service.AbstractService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.corneta.service.BetService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/user")
-public class BetAPI extends AbstractAPI<Bet, Long, BetDTO> {
+@RequestMapping("/bet")
+public class BetAPI {
 
-    protected BetAPI(AbstractService<Bet, Long, BetDTO> abstractService) {
-        super(abstractService);
+    private final BetService betService;
+
+    public BetAPI(BetService betService) {
+        this.betService = betService;
     }
+
+    @GetMapping
+    public ResponseEntity<List<BetDTO>> getAllBets() {
+        return ResponseEntity.ok(betService.getAll());
+    }
+
+    @PostMapping(value = "/{idBet}/user/{idUser}")
+    public ResponseEntity doBet(@ResponseBody )
+
 }

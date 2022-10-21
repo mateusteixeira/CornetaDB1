@@ -15,26 +15,21 @@ import lombok.NoArgsConstructor;
 public class UserDTO extends AbstractDTO {
 
     @JsonProperty("id")
-    @ApiModelProperty(value = "Id do Usuário")
     private Long id;
+
     @JsonProperty("name")
-    @ApiModelProperty(value = "Nome do Usuário")
     private String name;
 
     @JsonProperty("lastName")
-    @ApiModelProperty(value = "Sobrenome do Usuário")
     private String lastName;
 
     @JsonProperty("nickName")
-    @ApiModelProperty(value = "Apelido do Usuário")
     private String nickName;
 
     @JsonProperty("email")
-    @ApiModelProperty(value = "Email do Usuário")
     private String email;
 
     @JsonProperty("blockChainCode")
-    @ApiModelProperty(value = "Código na BlockChain")
     private String blockChainCode;
 
     @Override
