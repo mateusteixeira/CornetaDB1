@@ -26,7 +26,7 @@ public class UserAPI extends AbstractAPI<User, Long, UserDTO> {
     }
 
     @GetMapping(value = "/{idUser}/bets")
-    public ResponseEntity<UserBetDTO> getAllUserBets(@PathVariable("idUser") Long idUser) {
+    public ResponseEntity<List<UserBetDTO>> getAllUserBets(@PathVariable("idUser") Long idUser) {
         return ResponseEntity.ok(userService.getAllUserBets(idUser));
     }
 }

@@ -6,6 +6,7 @@ import br.com.corneta.domain.UserBet;
 import br.com.corneta.domain.dto.BetDTO;
 import br.com.corneta.domain.dto.UserBetDTO;
 import br.com.corneta.domain.dto.UserDTO;
+import br.com.corneta.repository.UserBetRepository;
 import br.com.corneta.translator.BetTranslator;
 import br.com.corneta.translator.UserBetTranslator;
 import br.com.corneta.translator.UserTranslator;
@@ -21,23 +22,18 @@ import java.util.stream.Collectors;
 @Service
 public class UserService extends AbstractService<User, Long, UserDTO> {
 
-    private final BetTranslator betTranslator;
+    private final UserBetRepository userBetRepository;
 
-    private final UserTranslator userTranslator;
+    private final UserBetTranslator userBetTranslator;
 
-    public UserService(AbstractValidator<User, Long> abstractValidator, IJpaRepository<User, Long> abstractRepository, AbstractTranslator<User, Long, UserDTO> abstractTranslator, BetTranslator betTranslator, UserTranslator userTranslator) {
+    public UserService(AbstractValidator<User, Long> abstractValidator, IJpaRepository<User, Long> abstractRepository, AbstractTranslator<User, Long, UserDTO> abstractTranslator, UserBetRepository userBetRepository) {
         super(abstractValidator, abstractRepository, abstractTranslator);
-        this.betTranslator = betTranslator;
-        this.userTranslator = userTranslator;
+        this.userBetRepository = userBetRepository;
     }
 
-    public UserBetDTO getAllUserBets(Long idUser) {
+    public List<UserBetDTO> getAllUserBets(Long idUser) {
         User user = super.getAbstractOrThrowNotFoundException(idUser);
-        List<Bet> bets = user.getUserBets().stream().map(UserBet::getBet).collect(Collectors.toList());
-        List<BetDTO> betDTOs = bets.stream().map(betTranslator::toDTO).collect(Collectors.toList());
-        return UserBetDTO.builder()
-                .userDTO(userTranslator.toDTO(user))
-                .betDTOs(betDTOs)
-                .build();
+        List<UserBet> allUserBets = userBetRepository.findAllByUser(user);
+        return allUserBets.stream().map(userBetTranslator::toDTO).collect(Collectors.toList());
     }
 }

@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,24 +17,39 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserBetDTO extends AbstractDTO {
 
-    @JsonProperty("user")
-    private UserDTO userDTO;
+    @JsonProperty("guessHomeTeam")
+    private int guessHomeTeam;
 
-    @JsonProperty("bets")
-    private List<BetDTO> betDTOs;
+    @JsonProperty("guessVisitingTeam")
+    private int guessVisitingTeam;
+
+    @JsonProperty("betMade")
+    private boolean betMade;
+
+    @JsonProperty("betDate")
+    private LocalDateTime betDate;
+
+    @JsonProperty("betMadeDate")
+    private LocalDateTime betMadeDate;
+
+    @JsonProperty("discountFromWallet")
+    private boolean discountFromWallet;
+
+    @JsonProperty("bet")
+    private BetDTO betDTO;
 
     @Override
     public Long getId() {
-        return userDTO.getId();
+        return betDTO.getId();
     }
 
     @Override
     public String getMainIdentifier() {
-        return userDTO.getMainIdentifier();
+        return betDTO.getMainIdentifier();
     }
 
     @Override
     public String getSecondaryIdentifier() {
-        return betDTOs.stream().map(BetDTO::getMainIdentifier).collect(Collectors.joining(","));
+        return betDTO.getSecondaryIdentifier();
     }
 }

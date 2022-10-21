@@ -21,5 +21,6 @@ public class Message implements Serializable {
     private Long idUserTo;
     private String message;
     private boolean viewed;
+    //TODO adicionar bet (grupo)
 
 }
