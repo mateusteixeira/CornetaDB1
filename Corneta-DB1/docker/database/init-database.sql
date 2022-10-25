@@ -1,5 +1,5 @@
 -- create databases
-CREATE DATABASE boaEntrega;
+CREATE DATABASE corneta;
 
 ----create root user and grant rights
-GRANT ALL PRIVILEGES ON DATABASE "boaEntrega" to root;
+GRANT ALL PRIVILEGES ON DATABASE "corneta" to root;

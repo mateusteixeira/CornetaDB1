@@ -26,7 +26,7 @@ public class Team extends AbstractEntity<Long> {
     @Column(name = "INITIALS")
     private String initials;
 
-    @Column(name = "GROUP")
+    @Column(name = "GROUPS")
     private String group;
 
     @Column(name = "FLAG")

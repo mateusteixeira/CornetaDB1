@@ -37,7 +37,7 @@ public class User extends AbstractEntity<Long> {
 
     @Column(name = "ROLE")
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.ROLE_USER;
 
     @OneToMany(mappedBy = "bet", fetch = FetchType.EAGER)
     private List<UserBet> userBets;

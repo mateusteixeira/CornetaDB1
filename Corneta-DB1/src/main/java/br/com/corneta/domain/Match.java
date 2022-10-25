@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "match")
+@Table(name = "matches")
 @SequenceGenerator(name = AbstractEntity.SEQ_NAME, sequenceName = "MATCH_SEQ", initialValue = 0, allocationSize = 1)
 public class Match extends AbstractEntity<Long> {
 
