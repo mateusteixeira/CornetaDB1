@@ -4,7 +4,10 @@ package br.com.corneta.domain;
 import br.com.genericcrud.domain.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Getter
 @Setter
@@ -15,7 +18,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "team")
 @SequenceGenerator(name = AbstractEntity.SEQ_NAME, sequenceName = "TEAM_SEQ", initialValue = 0, allocationSize = 1)
-public class Team extends AbstractEntity<Long>{
+public class Team extends AbstractEntity<Long> {
 
     @Column(name = "NAME")
     private String name;

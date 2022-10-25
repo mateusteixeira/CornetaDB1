@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "bet")
 @SequenceGenerator(name = AbstractEntity.SEQ_NAME, sequenceName = "BET_SEQ", initialValue = 0, allocationSize = 1)
-public class Bet extends AbstractEntity <Long>{
+public class Bet extends AbstractEntity<Long> {
 
     @OneToOne
     @JoinColumn(name = "id_match")

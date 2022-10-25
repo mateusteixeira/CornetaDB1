@@ -1,8 +1,6 @@
 package br.com.corneta.translator;
 
-import br.com.corneta.domain.Match;
 import br.com.corneta.domain.UserBet;
-import br.com.corneta.domain.dto.MatchDTO;
 import br.com.corneta.domain.dto.UserBetDTO;
 import org.springframework.stereotype.Service;
 

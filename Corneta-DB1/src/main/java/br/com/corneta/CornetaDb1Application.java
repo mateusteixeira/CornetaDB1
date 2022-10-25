@@ -18,8 +18,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @ComponentScan("br.com.corneta")
 public class CornetaDb1Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CornetaDb1Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CornetaDb1Application.class, args);
+    }
 
 }

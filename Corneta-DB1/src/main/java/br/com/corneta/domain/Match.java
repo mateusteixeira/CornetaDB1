@@ -3,10 +3,7 @@ package br.com.corneta.domain;
 import br.com.genericcrud.domain.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -29,8 +26,9 @@ public class Match extends AbstractEntity<Long> {
     @Column(name = "GAME_DATE")
     private LocalDateTime gameDate;
 
-    @Column(name = "ROUND")
-    private String round;
+    @OneToMany
+    @JoinColumn(name = "ID_ROUND")
+    private Round round;
 
     @Override
     public String getMainIdentifier() {

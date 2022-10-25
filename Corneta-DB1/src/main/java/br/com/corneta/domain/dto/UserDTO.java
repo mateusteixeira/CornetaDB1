@@ -2,7 +2,6 @@ package br.com.corneta.domain.dto;
 
 import br.com.genericcrud.domain.dto.AbstractDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

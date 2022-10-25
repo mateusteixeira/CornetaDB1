@@ -6,9 +6,7 @@ import br.com.corneta.exception.UserMessageNotValidException;
 import jdk.internal.joptsimple.internal.Strings;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
-import static java.util.Objects.*;
+import static java.util.Objects.isNull;
 
 @Component
 public class MessageValidator {

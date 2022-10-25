@@ -5,7 +5,7 @@ import br.com.genericcrud.validator.AbstractValidator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BetValidator extends AbstractValidator <Bet, Long> {
+public class BetValidator extends AbstractValidator<Bet, Long> {
     @Override
     public void validateExistent(Bet abstractEntity) {
 

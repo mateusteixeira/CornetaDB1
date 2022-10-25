@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Table(name = "user_bet")
 @SequenceGenerator(name = AbstractEntity.SEQ_NAME, sequenceName = "USER_BET_SEQ", initialValue = 0, allocationSize = 1)
-public class UserBet extends AbstractEntity<Long>{
+public class UserBet extends AbstractEntity<Long> {
 
     @Column(name = "guess_home_team")
     private int guessHomeTeam;

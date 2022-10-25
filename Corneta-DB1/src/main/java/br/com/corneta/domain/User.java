@@ -1,8 +1,6 @@
 package br.com.corneta.domain;
 
 import br.com.genericcrud.domain.AbstractEntity;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +34,10 @@ public class User extends AbstractEntity<Long> {
 
     @Column(name = "BLOCK_CHAIN_CODE")
     private String blockChainCode;
+
+    @Column(name = "ROLE")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "bet", fetch = FetchType.EAGER)
     private List<UserBet> userBets;

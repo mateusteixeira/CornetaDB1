@@ -1,5 +1,6 @@
 package br.com.corneta.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,12 +12,12 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MessageDTO implements Serializable {
+public class LoginDTO implements Serializable {
 
-    private String id;
-    private Long idBetTo;
-    private Long idUserFrom;
-    private String message;
-    private boolean viewed;
+    @JsonProperty("nickName")
+    private String nickName;
+
+    @JsonProperty("blockChainCode")
+    private String blockChainCode;
 
 }

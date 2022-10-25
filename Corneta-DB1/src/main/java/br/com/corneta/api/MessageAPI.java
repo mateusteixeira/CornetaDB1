@@ -2,7 +2,6 @@ package br.com.corneta.api;
 
 import br.com.corneta.domain.dto.MessageDTO;
 import br.com.corneta.service.MessageService;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,18 +23,18 @@ public class MessageAPI {
 
     @PostMapping(produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO messageDTO) {
-        log.info("Recebido request message userFrom: {} to: {}", messageDTO.getIdUserFrom(), messageDTO.getIdUserTo());
+        log.info("Recebido request message userFrom: {} to: {}", messageDTO.getIdUserFrom(), messageDTO.getIdBetTo());
         MessageDTO savedMessageDTO = messageService.createMessage(messageDTO);
         URI location = this.getUriToHeader(savedMessageDTO);
         return ResponseEntity.created(location).body(savedMessageDTO);
     }
 
-    @GetMapping(value = "/mymessages/{idUser}", produces = {"application/json"})
+    @GetMapping(value = "/my-messages/{idUser}", produces = {"application/json"})
     public ResponseEntity<List<MessageDTO>> getAllUserMessages(@PathVariable(name = "idUser") Long idUser) {
         return ResponseEntity.ok(messageService.getAllUserMessages(idUser));
     }
 
-    @GetMapping(value = "/mymessagessent/{idUser}", produces = {"application/json"})
+    @GetMapping(value = "/my-messages-sent/{idUser}", produces = {"application/json"})
     public ResponseEntity<List<MessageDTO>> getAllMessagesSent(@PathVariable(name = "idUser") Long idUser) {
         return ResponseEntity.ok(messageService.getAllMessagesSentByUser(idUser));
     }

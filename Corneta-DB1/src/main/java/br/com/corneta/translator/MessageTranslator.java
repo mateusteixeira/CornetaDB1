@@ -4,7 +4,6 @@ import br.com.corneta.domain.Message;
 import br.com.corneta.domain.dto.MessageDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-import org.springframework.stereotype.Component;
 
 @Mapper
 public interface MessageTranslator {

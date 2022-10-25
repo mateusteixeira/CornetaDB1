@@ -1,6 +1,5 @@
 package br.com.corneta.domain;
 
-import br.com.genericcrud.domain.AbstractEntity;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;

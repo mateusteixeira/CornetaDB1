@@ -1,15 +1,11 @@
 package br.com.corneta.service;
 
-import br.com.corneta.domain.Bet;
 import br.com.corneta.domain.User;
 import br.com.corneta.domain.UserBet;
-import br.com.corneta.domain.dto.BetDTO;
 import br.com.corneta.domain.dto.UserBetDTO;
 import br.com.corneta.domain.dto.UserDTO;
 import br.com.corneta.repository.UserBetRepository;
-import br.com.corneta.translator.BetTranslator;
 import br.com.corneta.translator.UserBetTranslator;
-import br.com.corneta.translator.UserTranslator;
 import br.com.genericcrud.repository.IJpaRepository;
 import br.com.genericcrud.service.AbstractService;
 import br.com.genericcrud.translator.AbstractTranslator;
@@ -26,9 +22,10 @@ public class UserService extends AbstractService<User, Long, UserDTO> {
 
     private final UserBetTranslator userBetTranslator;
 
-    public UserService(AbstractValidator<User, Long> abstractValidator, IJpaRepository<User, Long> abstractRepository, AbstractTranslator<User, Long, UserDTO> abstractTranslator, UserBetRepository userBetRepository) {
+    public UserService(AbstractValidator<User, Long> abstractValidator, IJpaRepository<User, Long> abstractRepository, AbstractTranslator<User, Long, UserDTO> abstractTranslator, UserBetRepository userBetRepository, UserBetTranslator userBetTranslator) {
         super(abstractValidator, abstractRepository, abstractTranslator);
         this.userBetRepository = userBetRepository;
+        this.userBetTranslator = userBetTranslator;
     }
 
     public List<UserBetDTO> getAllUserBets(Long idUser) {

@@ -1,6 +1,7 @@
 package br.com.corneta.api;
 
 import br.com.corneta.domain.dto.BetDTO;
+import br.com.corneta.domain.dto.UserBetDTO;
 import br.com.corneta.service.BetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,13 @@ public class BetAPI {
     }
 
     @PostMapping(value = "/{idBet}/user/{idUser}")
-    public ResponseEntity doBet(@ResponseBody )
+    public ResponseEntity<UserBetDTO> doBet(@RequestBody UserBetDTO userBetDTO, @PathVariable("idBet") Long idBet, @PathVariable("idUser") Long idUser) {
+        return ResponseEntity.ok(betService.doBetForUser(userBetDTO, idBet, idUser));
+    }
+
+    @PostMapping(value = "/{idBet}/user/{idUser}/effect")
+    public ResponseEntity<UserBetDTO> effectBet(@PathVariable("idBet") Long idBet, @PathVariable("idUser") Long idUser) {
+        return ResponseEntity.ok(betService.doEffect(idBet, idUser));
+    }
 
 }
