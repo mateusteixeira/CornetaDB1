@@ -1,5 +1,9 @@
 version: '3'
 
+volumes:
+  db_corneta:
+    driver: local
+
 services:
   db:
     container_name: pg_container
@@ -7,11 +11,11 @@ services:
     restart: always
     volumes:
       - ./database/init-database.sql:/docker-entrypoint-initdb.d/init-database.sql
-      - db_enterprise:/var/lib/postgresql/data
+      - db_corneta:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: boaEntrega
+      POSTGRES_DB: corneta
     ports:
       - "5432:5432"
     networks:
@@ -39,7 +43,7 @@ services:
   app-corneta:
     container_name: corneta
     build:
-      context: ../Corneta-DB1
+      context: ..
       dockerfile: Dockerfile
     image: corneta:latest
     ports:

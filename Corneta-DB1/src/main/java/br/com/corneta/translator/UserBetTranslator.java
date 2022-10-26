@@ -16,11 +16,11 @@ public class UserBetTranslator {
     public UserBetDTO toDTO(UserBet userBet) {
         return UserBetDTO.builder()
                 .guessHomeTeam(userBet.getGuessHomeTeam())
-                .guessVisitingTeam(userBet.getGuessVisitinTeam())
-                .betMade(userBet.getBetMade())
+                .guessVisitingTeam(userBet.getGuessVisitingTeam())
+                .betMade(userBet.isBetMade())
                 .betDate(userBet.getBetDate())
-                .betMadeDate(userBet.getBetMateDate())
-                .discountFromWallet(userBet.getDiscountFromWallet())
+                .betMadeDate(userBet.getBetMadeDate())
+                .discountFromWallet(userBet.isDiscountFromWallet())
                 .build();
 
     }

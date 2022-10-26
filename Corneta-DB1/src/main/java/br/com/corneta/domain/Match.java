@@ -26,7 +26,7 @@ public class Match extends AbstractEntity<Long> {
     @Column(name = "GAME_DATE")
     private LocalDateTime gameDate;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "ID_ROUND")
     private Round round;
 

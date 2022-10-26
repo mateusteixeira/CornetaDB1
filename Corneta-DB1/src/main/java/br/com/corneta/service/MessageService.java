@@ -29,11 +29,11 @@ public class MessageService {
     }
 
     public MessageDTO createMessage(MessageDTO messageDTO) {
-        log.info("Creating message userFrom {} to {}", messageDTO.getIdUserFrom(), messageDTO.getIdUserTo());
+        log.info("Creating message userFrom {} to {}", messageDTO.getIdUserFrom(), messageDTO.getIdBetTo());
         Message message = messageTranslator.toEntity(messageDTO);
         messageValidator.validateMessage(message);
         MessageDTO toDTO = messageTranslator.toDTO(messageRepository.save(message));
-        log.info("Created message userFrom {} to {}", messageDTO.getIdUserFrom(), messageDTO.getIdUserTo());
+        log.info("Created message userFrom {} to {}", messageDTO.getIdUserFrom(), messageDTO.getIdBetTo());
         return toDTO;
     }
 

@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.corneta</groupId>
     <artifactId>Corneta-DB1</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>Corneta-DB1</name>
     <description>Demo project for Spring Boot</description>
     <properties>

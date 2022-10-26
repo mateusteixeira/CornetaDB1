@@ -13,6 +13,4 @@ public interface UserBetRepository extends IJpaRepository<UserBet, Long> {
     List<UserBet> findAllByUser(User user);
 
     UserBet findByUserAndBet(User user, Bet bet);
-
-    User findByNickName(String nickName);
 }
