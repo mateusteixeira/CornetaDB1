@@ -10,8 +10,8 @@ import static java.util.Objects.isNull;
 public class MessageValidator {
 
     public void validateMessage(Message message) {
-        if (isNull(message.getIdUserTo())) {
-            throw new UserMessageNotValidException("Usuário remetente não informado");
+        if (isNull(message.getIdBetTo())) {
+            throw new UserMessageNotValidException("Aposta remetente não informada");
         }
 
         if (isNull(message.getIdUserFrom())) {

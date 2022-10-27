@@ -15,7 +15,7 @@ public abstract class AbstractValidator<T extends AbstractEntity<ID>, ID extends
     protected void validate(T abstractEntity) {
         if (Objects.nonNull(abstractEntity)) {
             log.error("Error validate {}. Already Exists", getValidatorName());
-            throw new IEntityAlreadyExistsException(String.format("%s already exists for %s - %s", getValidatorName(), abstractEntity.getMainIdentifier(), abstractEntity.getSecondaryIdentifier()));
+            throw new IEntityAlreadyExistsException(String.format("%s already exists for %s", getValidatorName(), abstractEntity.getId()));
         }
     }
 

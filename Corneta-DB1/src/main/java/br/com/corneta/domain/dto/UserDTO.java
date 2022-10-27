@@ -36,13 +36,4 @@ public class UserDTO extends AbstractDTO {
         return id;
     }
 
-    @Override
-    public String getMainIdentifier() {
-        return getId().toString();
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return getNickName();
-    }
 }

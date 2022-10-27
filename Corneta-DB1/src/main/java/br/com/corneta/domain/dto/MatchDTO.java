@@ -35,13 +35,4 @@ public class MatchDTO extends AbstractDTO {
         return id;
     }
 
-    @Override
-    public String getMainIdentifier() {
-        return homeTeamDTO.getMainIdentifier() + " x " + visitingTeamDTO.getMainIdentifier();
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return homeTeamDTO.getInitials() + " x " + visitingTeamDTO.getInitials();
-    }
 }

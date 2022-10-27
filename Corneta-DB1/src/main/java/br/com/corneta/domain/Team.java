@@ -3,11 +3,11 @@ package br.com.corneta.domain;
 
 import br.com.genericcrud.domain.AbstractEntity;
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,13 +32,12 @@ public class Team extends AbstractEntity<Long> {
     @Column(name = "FLAG")
     private String flag;
 
-    @Override
-    public String getMainIdentifier() {
-        return name;
-    }
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "homeTeam")
+    private List<Match> matchesInHome;
 
-    @Override
-    public String getSecondaryIdentifier() {
-        return initials;
-    }
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "visitingTeam")
+    private List<Match> matchesAsVisiting;
+
 }

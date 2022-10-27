@@ -21,7 +21,7 @@ public class Message implements Serializable {
     @Id
     private String id;
     private Long idUserFrom;
-    private Long idUserTo;
+    private Long idBetTo;
     private String message;
     private boolean viewed;
     //TODO adicionar bet (grupo)

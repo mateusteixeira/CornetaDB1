@@ -13,10 +13,6 @@ public abstract class AbstractEntity<ID extends Serializable> implements IEntity
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
     private ID id;
 
-    public abstract String getMainIdentifier();
-
-    public abstract String getSecondaryIdentifier();
-
     public ID getId() {
         return this.id;
     }

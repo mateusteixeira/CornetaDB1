@@ -33,13 +33,4 @@ public class TeamDTO extends AbstractDTO {
         return id;
     }
 
-    @Override
-    public String getMainIdentifier() {
-        return name;
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return initials;
-    }
 }

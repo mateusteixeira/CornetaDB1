@@ -31,12 +31,9 @@ public class AbstractService<T extends AbstractEntity<ID>, ID extends Serializab
 
 
     public R createAbstract(R abstractDTO) {
-        log.info("Creating {} - {}", abstractDTO.getClass(), abstractDTO.getMainIdentifier());
         T iEntity = abstractTranslator.toEntity(abstractDTO);
         abstractValidator.validateExistent(iEntity);
-        R toDTO = abstractTranslator.toDTO(abstractRepository.save(iEntity));
-        log.info("Created {} - {}", toDTO.getClass(), toDTO.getMainIdentifier());
-        return toDTO;
+        return abstractTranslator.toDTO(abstractRepository.save(iEntity));
     }
 
     public R getAbstractById(ID id) {
@@ -54,11 +51,9 @@ public class AbstractService<T extends AbstractEntity<ID>, ID extends Serializab
     }
 
     public void updateAbstract(R abstractDTO, ID id) {
-        log.info("Updating abstract: {}", abstractDTO.getMainIdentifier());
         T abstractEntity = getAbstractOrThrowNotFoundException(id);
         abstractTranslator.update(abstractEntity, abstractDTO);
         abstractRepository.save(abstractEntity);
-        log.info("Updated abstract: {}", abstractDTO.getMainIdentifier());
     }
 
     public void deleteAbstract(ID idAbstract) {

@@ -27,13 +27,4 @@ public class BetDTO extends AbstractDTO {
         return id;
     }
 
-    @Override
-    public String getMainIdentifier() {
-        return id.toString();
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return contractHashCode;
-    }
-}
+   }

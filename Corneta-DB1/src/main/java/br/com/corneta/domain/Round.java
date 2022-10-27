@@ -30,13 +30,4 @@ public class Round extends AbstractEntity<Long> {
     @OneToMany(mappedBy = "round", fetch = FetchType.EAGER)
     private List<Match> matches;
 
-    @Override
-    public String getMainIdentifier() {
-        return null;
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return null;
-    }
 }

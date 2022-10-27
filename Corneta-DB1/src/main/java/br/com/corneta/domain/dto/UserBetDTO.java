@@ -40,14 +40,4 @@ public class UserBetDTO extends AbstractDTO {
     public Long getId() {
         return betDTO.getId();
     }
-
-    @Override
-    public String getMainIdentifier() {
-        return betDTO.getMainIdentifier();
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return betDTO.getSecondaryIdentifier();
-    }
 }

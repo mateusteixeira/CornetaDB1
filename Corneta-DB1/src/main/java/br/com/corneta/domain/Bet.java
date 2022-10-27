@@ -28,13 +28,4 @@ public class Bet extends AbstractEntity<Long> {
     @OneToMany(mappedBy = "bet", fetch = FetchType.EAGER)
     private List<UserBet> userBets;
 
-    @Override
-    public String getMainIdentifier() {
-        return null;
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return null;
-    }
 }

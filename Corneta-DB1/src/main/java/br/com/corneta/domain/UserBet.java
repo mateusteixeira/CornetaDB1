@@ -43,15 +43,4 @@ public class UserBet extends AbstractEntity<Long> {
     @ManyToOne
     @JoinColumn(name = "id_bet")
     private Bet bet;
-
-
-    @Override
-    public String getMainIdentifier() {
-        return null;
-    }
-
-    @Override
-    public String getSecondaryIdentifier() {
-        return null;
-    }
 }
