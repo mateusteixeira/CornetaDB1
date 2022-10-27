@@ -1,9 +1,7 @@
 package br.com.corneta.validator;
 
 import br.com.corneta.domain.Message;
-import br.com.corneta.exception.InvalidMessageException;
 import br.com.corneta.exception.UserMessageNotValidException;
-import jdk.internal.joptsimple.internal.Strings;
 import org.springframework.stereotype.Component;
 
 import static java.util.Objects.isNull;
@@ -18,10 +16,6 @@ public class MessageValidator {
 
         if (isNull(message.getIdUserFrom())) {
             throw new UserMessageNotValidException("Usuário destinatário não informado");
-        }
-
-        if (Strings.isNullOrEmpty(message.getMessage())) {
-            throw new InvalidMessageException("Mensagem não pode ser vazia");
         }
     }
 
