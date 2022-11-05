@@ -28,6 +28,11 @@ public class BetAPI {
         return ResponseEntity.ok(betService.doBetForUser(userBetDTO, idBet, idUser));
     }
 
+    @GetMapping(value = "/{idBet}/user/{idUser}")
+    public ResponseEntity<UserBetDTO> getBet(@PathVariable("idBet") Long idBet, @PathVariable("idUser") Long idUser) {
+        return ResponseEntity.ok(betService.getBetForUser(idBet, idUser));
+    }
+
     @PostMapping(value = "/{idBet}/user/{idUser}/effect")
     public ResponseEntity<UserBetDTO> effectBet(@PathVariable("idBet") Long idBet, @PathVariable("idUser") Long idUser) {
         return ResponseEntity.ok(betService.doEffect(idBet, idUser));

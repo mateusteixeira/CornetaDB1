@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/user")
 public class AuthAPI {
 
     @Autowired
@@ -44,7 +44,7 @@ public class AuthAPI {
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginDTO loginRequest) {
 
         Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getNickName(), loginRequest.getBlockChainCode()));
+                .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getBlockChainCode(), loginRequest.getBlockChainCode()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -60,6 +60,7 @@ public class AuthAPI {
                 .body(new UserInfoResponseDTO(userDetails.getId(),
                         userDetails.getUsername(),
                         userDetails.getEmail(),
+                        userDetails.getPassword(),
                         roles));
     }
 

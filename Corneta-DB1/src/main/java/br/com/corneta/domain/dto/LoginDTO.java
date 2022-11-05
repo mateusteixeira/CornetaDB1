@@ -14,9 +14,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class LoginDTO implements Serializable {
 
-    @JsonProperty("nickName")
-    private String nickName;
-
     @JsonProperty("blockChainCode")
     private String blockChainCode;
 

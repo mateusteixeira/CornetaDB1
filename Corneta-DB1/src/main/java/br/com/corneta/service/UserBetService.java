@@ -30,8 +30,8 @@ public class UserBetService {
                 .guessHomeTeam(userBetDTO.getGuessHomeTeam())
                 .guessVisitingTeam(userBetDTO.getGuessVisitingTeam())
                 .discountFromWallet(userBetDTO.isDiscountFromWallet())
-                .betMade(userBetDTO.isBetMade())
-                .betMadeDate(userBetDTO.isBetMade() ? LocalDateTime.now() : null)
+                .betMade(true)
+                .betMadeDate(LocalDateTime.now())
                 .build();
         userBet = userBetRepository.save(userBet);
         return userBetTranslator.toDTO(userBet);
@@ -42,6 +42,11 @@ public class UserBetService {
         userBet.setBetMade(true);
         userBet.setBetMadeDate(LocalDateTime.now());
         userBet = userBetRepository.save(userBet);
+        return userBetTranslator.toDTO(userBet);
+    }
+
+    public UserBetDTO getUserBetDTO(User user, Bet bet) {
+        UserBet userBet = userBetRepository.findByUserAndBet(user, bet);
         return userBetTranslator.toDTO(userBet);
     }
 }

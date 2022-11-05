@@ -19,6 +19,9 @@ public class UserInfoResponseDTO implements Serializable {
     @JsonProperty("email")
     private String email;
 
+    @JsonProperty("blockChainCode")
+    private String blockChainCode;
+
     @JsonProperty("roles")
     private List<String> roles;
 

@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface UserRepository extends IJpaRepository<User, Long> {
 
     Optional<User> findByNickName(String username);
+
+    Optional<User> findByBlockChainCode(String username);
 }

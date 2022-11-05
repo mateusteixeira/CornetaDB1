@@ -45,4 +45,10 @@ public class BetService {
         Bet bet = betRepository.findById(idBet).orElseThrow(() -> new BetNotFoundException("Bet Not Found"));
         return userBetService.doEffect(user, bet);
     }
+
+    public UserBetDTO getBetForUser(Long idBet, Long idUser) {
+        User user = userService.getAbstractOrThrowNotFoundException(idUser);
+        Bet bet = betRepository.findById(idBet).orElseThrow(() -> new BetNotFoundException("Bet Not Found"));
+        return userBetService.getUserBetDTO(user, bet);
+    }
 }

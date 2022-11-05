@@ -15,6 +15,7 @@ public class UserBetTranslator {
 
     public UserBetDTO toDTO(UserBet userBet) {
         return UserBetDTO.builder()
+                .id(userBet.getId())
                 .guessHomeTeam(userBet.getGuessHomeTeam())
                 .guessVisitingTeam(userBet.getGuessVisitingTeam())
                 .betMade(userBet.isBetMade())

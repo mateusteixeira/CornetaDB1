@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends MongoRepository<Message, String> {
 
-    List<Message> findAllByIdUserTo(Long idUser);
+    List<Message> findAllByIdBetTo(Long idUser);
 
     List<Message> findAllByIdUserFrom(Long idUser);
 }

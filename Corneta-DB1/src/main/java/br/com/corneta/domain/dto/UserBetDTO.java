@@ -15,6 +15,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UserBetDTO extends AbstractDTO {
 
+    @JsonProperty("idPalpite")
+    private Long id;
+
     @JsonProperty("guessHomeTeam")
     private int guessHomeTeam;
 

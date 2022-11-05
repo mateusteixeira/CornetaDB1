@@ -38,7 +38,7 @@ public class MessageService {
     }
 
     public List<MessageDTO> getAllUserMessages(Long idUser) {
-        return messageRepository.findAllByIdUserTo(idUser).stream().map(messageTranslator::toDTO).collect(Collectors.toList());
+        return messageRepository.findAllByIdBetTo(idUser).stream().map(messageTranslator::toDTO).collect(Collectors.toList());
     }
 
     public List<MessageDTO> getAllMessagesSentByUser(Long idUser) {
