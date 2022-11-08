@@ -1,0 +1,35 @@
+input {
+  padding: 10px !important;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  height: 45px;
+}
+
+.card {
+  background-color: #ecf0f1;
+  width: 570px;
+  height: 270px;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.grid {
+  display: grid;
+}
+
+.field-top {
+  margin-top: 20px;
+}
+
+.box-save-button {
+  display: flex;
+  justify-content: end;
+}
+
+.box-save-button>button {
+  background-color: #3498db;
+  color: #fff;
+  width: 90px;
+  height: 45px;
+  border-radius: 4px;
+}

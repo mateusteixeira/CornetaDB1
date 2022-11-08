@@ -1,0 +1,22 @@
+.line {
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.back-button {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+.user-name {
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 4px;
+  min-height: 80px;
+  background: #ecf0f1;
+}
