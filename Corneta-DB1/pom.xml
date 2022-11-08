@@ -6,7 +6,7 @@
         <groupId>br.com.genericcrud.sdk</groupId>
         <artifactId>GenericCRUD-SDK</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>br.com.corneta</groupId>
     <artifactId>Corneta-DB1</artifactId>
