@@ -15,3 +15,10 @@ git clone https://github.com/hirosystems/todos && cd todos
 yarn install
 yarn run start
 ```
+
+# Start Mock
+
+Open the terminal and run the command
+``` bash
+json-server --watch db.json
+```
