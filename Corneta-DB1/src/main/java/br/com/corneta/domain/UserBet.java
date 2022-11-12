@@ -36,6 +36,9 @@ public class UserBet extends AbstractEntity<Long> {
     @Column(name = "discount_from_wallet")
     private boolean discountFromWallet;
 
+    @Column(name = "transaction_id")
+    private String transactionId;
+
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
