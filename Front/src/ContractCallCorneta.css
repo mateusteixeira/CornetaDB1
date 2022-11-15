@@ -1,0 +1,82 @@
+.menu-round {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.box-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-cards {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 10px
+}
+
+.card-width {
+  width: 20rem;
+}
+
+.box-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.teams {
+  display: flex;
+  align-items: center;
+}
+
+.teams>label {
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.teams>input {
+  width: 55px;
+  padding-left: 5px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.separator {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.flag {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.visitingTeam {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.box-info-match {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.save-bet {
+  width: 100%;
+  background-color: #8a1538 !important;
+  border: 1px solid #8a1538 !important;
+}

@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 32vmin;
+  pointer-events: none;
+}
+
+.navbar {
+  background-color: #8a1538;
+}
+
+.navbar > span {
+  color: #fff !important;
+}
+
+.brand {
+  color: #fff !important;
+}
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 1.25vmin);
+  color: white;
+} */
+
+/* .App-header {
+  background-image: url('https://img.freepik.com/vetores-gratis/ilustracao-3d-da-bandeira-do-futebol-da-copa-do-mundo-do-qatar_206725-608.jpg?w=1380&t=st=1668300032~exp=1668300632~hmac=34075c597a162c1ccfad9fae2193ceaf7e26219ed70af8cac7e80d24bbce46f7');
+  background-repeat: no-repeat;
+} */
+
+.App-link {
+  color: #bc93f9;
+}
