@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Form, Navbar, Row } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import ConnectWallet from './ConnectWallet';
+import "../Message.css"
 
+// URL publicada http://44.201.160.92/
 const Messages = () => {
   const { state } = useLocation();
   const url = 'http://localhost:3000';
@@ -88,7 +90,7 @@ const Messages = () => {
                 <Form.Control as="textarea" rows={3} value={comment} onChange={handleCommentChange} />
               </Form.Group>
 
-              <Button variant="primary" disabled={!comment} onClick={createComment}>Comentar</Button>
+              <Button className='message-btn' disabled={!comment} onClick={createComment}>Comentar</Button>
             </Form>
           </Col>
         </Row>
@@ -111,6 +113,8 @@ const Messages = () => {
                     </div>
                   )
                 })}
+
+                {commentList.length <= 0 ? <div>Não ha comentarios no momento</div> : null}
               </>
             </section>
           </Col>

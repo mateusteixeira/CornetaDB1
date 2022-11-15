@@ -72,18 +72,27 @@ const ContractCallCorneta = () => {
     hasScoreboard(matchCopy[indexInArray]);
   }
 
-  function hasScoreboard(match) {
+  function callSaveMatch(item) {
+    saveMatchBet(item);
+  }
 
-    // console.log(document.getElementById(`save-bet-${match.id}`));
+  function hasScoreboard(match) {
     if (match.homeTeam.scoreboard.length >= 0 && match.visitingTeam.scoreboard.length >= 0) {
       document.getElementById(`save-bet-${match.id}`).disabled = false;
+      document.getElementById(`save-bet-${match.id}`).addEventListener("click", function (event) {
+        event.preventDefault();
+        console.log(event);
+        if(!event.detail || event.detail === 1){
+          callSaveMatch(match);
+          document.getElementById(`save-bet-${match.id}`).disabled = true;
+          event.stopPropagation();
+        }
+      });
     }
 
     if (match.homeTeam.scoreboard.length <= 0 || match.visitingTeam.scoreboard.length <= 0) {
       document.getElementById(`save-bet-${match.id}`).disabled = true;
     }
-
-    // console.log(document.getElementById(`save-bet-${match.id}`));
   }
 
   function selectRound(round) {
@@ -99,6 +108,8 @@ const ContractCallCorneta = () => {
       betMade: false,
       discountFromWallet: false
     };
+
+    console.log('bet: ', bet);
 
     // localhost:8888/corneta/bet/{idBet}/user/{idUser}
     // O id do match eh id da bet
@@ -155,7 +166,10 @@ const ContractCallCorneta = () => {
     free: falseCV(),
   });
 
+
+
   function saveMatchBet(item) {
+    // console.log(item);
     doContractCall({
       network: new StacksTestnet(),
       anchorMode: AnchorMode.Any,
@@ -220,6 +234,7 @@ const ContractCallCorneta = () => {
                             <Card.Subtitle className="mb-2 text-muted">
                               <div className="details">
                                 <div>{item.round}</div>
+
                                 <Link to={'messages'} state={{ idBet: 1, idUser: 1 }}>
                                   <Button variant="link">Visualizar detalhes</Button>
                                 </Link>
