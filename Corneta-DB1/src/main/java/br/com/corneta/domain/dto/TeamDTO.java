@@ -28,6 +28,9 @@ public class TeamDTO extends AbstractDTO {
     @JsonProperty("flag")
     private String flag;
 
+    @JsonProperty("score")
+    private String score;
+
     @Override
     public Long getId() {
         return id;

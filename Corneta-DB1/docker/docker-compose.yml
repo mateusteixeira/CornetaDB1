@@ -49,7 +49,7 @@ services:
       dockerfile: Dockerfile
     image: corneta:latest
     ports:
-      - "80:8080"
+      - "8888:8888"
     depends_on:
       - db
       - mongo
